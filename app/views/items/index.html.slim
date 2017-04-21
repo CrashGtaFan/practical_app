@@ -1,23 +1,23 @@
-h1 Listing items
-
-table
-  thead
-    tr
-      th Name
-      th Done
-      th
-      th
-      th
-
-  tbody
-    - @items.each do |item|
+center
+  h1 Listing items
+.col-md-8.col-xs-12.col-md-offset-2
+  table.table
+    thead
       tr
-        td = item.name
-        td = item.done
-        td = link_to 'Show', item
-        td = link_to 'Edit', edit_item_path(item)
-        td = link_to 'Destroy', item, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Item', new_item_path
+        th #
+        th Name
+        th Done
+        th
+        th
+        th
+    tbody.items_all data-update-url=sort_items_url
+      - @items.each do |item|
+        tr id='item_#{item.id}'
+          td= item.position
+          td= item.name
+          td= item.done
+          td= link_to 'Show', item, class: 'btn btn-info'
+          td= link_to 'Edit', edit_item_path(item), class: 'btn btn-warning'
+          td= link_to 'Destroy', item, data: { confirm: 'Are you sure?' },   method: :delete, class: 'btn btn-danger'
+  br
+  = link_to 'New Item', new_item_path, class: 'btn btn-primary'

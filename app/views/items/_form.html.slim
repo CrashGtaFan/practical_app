@@ -1,15 +1,9 @@
 = form_for @item do |f|
-  - if @item.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
-      ul
-        - @item.errors.full_messages.each do |message|
-          li = message
-
+  = render 'error'
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control', required: true
   .field
     = f.label :done
     = f.check_box :done
-  .actions = f.submit
+  .actions = f.submit class: 'btn btn-success'
